@@ -16,8 +16,8 @@ padding:20px;border-bottom:1px solid #ffd500;
 display:flex;justify-content:space-between;
 align-items:center;
 }
-.logo{color:#ffd500;font-size:24px;font-weight:900}
-.status{color:#aaff00;font-size:12px}
+.logo{color:#ffd500;font-size:23px;font-weight:900}
+.status{color:#aaff00;font-size:11px}
 main{max-width:850px;margin:auto;padding:20px}
 h1{color:#ffd500;font-size:30px}
 .subtitle{color:#888}
@@ -28,9 +28,9 @@ padding:15px;margin:20px 0;
 background:#101010;
 }
 .message{
-padding:12px;margin:10px 0;
+padding:13px;margin:10px 0;
 border-radius:10px;line-height:1.5;
-white-space:pre-wrap;
+white-space:pre-wrap;overflow-wrap:anywhere;
 }
 .bot{background:#202020;border-left:3px solid #ffd500}
 .user{background:#292500;text-align:right}
@@ -50,6 +50,7 @@ footer{text-align:center;color:#666;padding:20px;font-size:12px}
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo">✦ STAR V9000</div>
 <div class="status">● SYSTEM ONLINE</div>
@@ -70,13 +71,14 @@ What are we building today?
 </div>
 
 <div class="controls">
-<input id="prompt" placeholder="Message STAR V9000..."
-onkeydown="if(event.key==='Enter')sendMessage()">
+<input id="prompt" placeholder="Message STAR V9000...">
 <button onclick="sendMessage()">SEND</button>
 </div>
 </main>
 
-<footer>STAR V9000 • VERSION 9000.1 • GOLDEN OMEGA</footer>
+<footer>
+STAR V9000 • VERSION 9000.2 • GOLDEN OMEGA
+</footer>
 
 <script>
 const chat=document.getElementById("chat");
@@ -97,61 +99,51 @@ if(!text)return;
 addMessage(text,"user");
 input.value="";
 
+addMessage("STAR V9000 is thinking...","bot");
+
 setTimeout(()=>{
-addMessage(think(text),"bot");
-},400);
+const last=chat.lastElementChild;
+last.textContent=think(text);
+},300);
 }
 
 async function think(text){
-  const q = text.toLowerCase();
-
-  if(q.includes("hello") || q === "hi")
-    return "STAR V9000 ONLINE. What's the mission?";
-
-  if(q.includes("who are you"))
-    return "I AM STAR V9000 — GOLDEN OMEGA INTELLIGENCE.";
-
-  if(q.includes("help"))
-    return "I CAN HELP WITH CODING, FOOTBALL, ROBLOX, IDEAS AND PROJECTS.";
-
-  if(q.includes("football"))
-    return "FOOTBALL MODE ACTIVATED. Tell me your tactical objective.";
-
-  if(q.includes("roblox"))
-    return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we building?";
-
-  if(q.includes("code") || q.includes("program"))
-    return "DEVELOPER MODE ACTIVATED. Describe the code you want to create.";
-
-  return "MISSION RECEIVED: " + text +
-    "\n\nSTAR V9000 is ready for its real AI connection.";
-}
 const q=text.toLowerCase();
 
-if(q.includes("hello")||q==="hi")
-return "STAR V9000 ONLINE. How can I assist you?";
-
-if(q.includes("help"))
-return "COMMAND CENTER:\n• Build applications\n• Generate ideas\n• Explain code\n• Plan projects\n• Answer questions";
+if(q.includes("hello")||q==="hi"||q==="yo")
+return "STAR V9000 ONLINE. What's the mission, Commander?";
 
 if(q.includes("who are you"))
-return "I AM STAR V9000 — YOUR GOLDEN OMEGA AI COMMAND CENTER.";
+return "I AM STAR V9000 — GOLDEN OMEGA INTELLIGENCE.";
 
-if(q.includes("build"))
-return "BUILD MODE ACTIVATED. Describe the application you want to create.";
+if(q.includes("help"))
+return "COMMAND CENTER:\n\n1. Application development\n2. Coding assistance\n3. Football tactics\n4. Roblox development\n5. Creative ideas\n6. General questions";
 
 if(q.includes("football"))
-return "FOOTBALL INTELLIGENCE ACTIVATED. Let's discuss tactics, training and football.";
+return "FOOTBALL INTELLIGENCE ACTIVATED. Tell me what we're analysing.";
 
 if(q.includes("roblox"))
 return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we creating?";
 
-if(q.includes("bye"))
-return "STAR V9000 STANDING BY. See you next time.";
+if(q.includes("code")||q.includes("program"))
+return "DEVELOPER MODE ACTIVATED. Describe your project.";
 
-return "I received your message: "+text+
-"\n\nMy basic response engine is active. My advanced AI brain will be connected in a future upgrade.";
+if(q.includes("build"))
+return "BUILD MODE ACTIVATED. Tell me what application you want to create.";
+
+if(q.includes("thank"))
+return "You're welcome, Commander. STAR V9000 standing by.";
+
+if(q.includes("your name"))
+return "My name is STAR V9000. Golden Omega intelligence.";
+
+return "MISSION RECEIVED.\n\nYou said: "+text+
+"\n\nMy basic response engine is active. The real AI brain is our next upgrade.";
 }
+
+input.addEventListener("keydown",function(e){
+if(e.key==="Enter")sendMessage();
+});
 </script>
 </body>
 </html>
