@@ -92,7 +92,7 @@ chat.appendChild(msg);
 chat.scrollTop=chat.scrollHeight;
 }
 
-function sendMessage(){
+async function sendMessage(){
 const text=input.value.trim();
 if(!text)return;
 
@@ -103,7 +103,7 @@ addMessage("STAR V9000 is thinking...","bot");
 
 setTimeout(()=>{
 const last=chat.lastElementChild;
-last.textContent=think(text);
+last.textContent = await think(text);
 },300);
 }
 
