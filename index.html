@@ -3,143 +3,380 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAR V9000</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STAR V9000 | Golden Omega</title>
+
 <style>
+:root {
+ --bg:#080808;
+ --panel:#111111;
+ --yellow:#FFD500;
+ --gold:#FFB800;
+ --white:#ffffff;
+ --muted:#888888;
+}
+
 *{box-sizing:border-box}
-body{
-margin:0;background:#080808;color:white;
-font-family:Arial,sans-serif;
+
+body {
+ margin:0;
+ background:var(--bg);
+ color:var(--white);
+ font-family:Arial,sans-serif;
 }
-header{
-padding:20px;border-bottom:1px solid #ffd500;
-display:flex;justify-content:space-between;
-align-items:center;
+
+header {
+ padding:18px;
+ border-bottom:1px solid #403500;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
-.logo{color:#ffd500;font-size:23px;font-weight:900}
-.status{color:#aaff00;font-size:11px}
-main{max-width:850px;margin:auto;padding:20px}
-h1{color:#ffd500;font-size:30px}
-.subtitle{color:#888}
-#chat{
-height:55vh;overflow-y:auto;
-border:1px solid #333;border-radius:12px;
-padding:15px;margin:20px 0;
-background:#101010;
+
+.logo {
+ color:var(--yellow);
+ font-size:23px;
+ font-weight:900;
+ letter-spacing:1px;
 }
-.message{
-padding:13px;margin:10px 0;
-border-radius:10px;line-height:1.5;
-white-space:pre-wrap;overflow-wrap:anywhere;
+
+.online {
+ color:#aaff55;
+ font-size:11px;
 }
-.bot{background:#202020;border-left:3px solid #ffd500}
-.user{background:#292500;text-align:right}
-.controls{display:flex;gap:8px}
-input{
-flex:1;min-width:0;padding:15px;
-background:#151515;border:1px solid #555;
-border-radius:8px;color:white;font-size:16px;
+
+.layout {
+ max-width:1100px;
+ margin:auto;
+ padding:18px;
 }
-button{
-background:#ffd500;color:black;
-border:0;border-radius:8px;
-padding:14px;font-weight:bold;
+
+.hero {
+ padding:24px 0;
 }
-button:active{opacity:.7}
-footer{text-align:center;color:#666;padding:20px;font-size:12px}
+
+.hero h1 {
+ color:var(--yellow);
+ font-size:32px;
+ margin-bottom:5px;
+}
+
+.hero p {
+ color:var(--muted);
+}
+
+.panel {
+ background:var(--panel);
+ border:1px solid #292929;
+ border-radius:13px;
+ padding:16px;
+ margin-bottom:15px;
+}
+
+.section-title {
+ color:var(--yellow);
+ font-weight:bold;
+ margin-bottom:13px;
+}
+
+.modes {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.mode {
+ background:#191919;
+ border:1px solid #393939;
+ border-radius:9px;
+ padding:14px;
+ color:white;
+ text-align:left;
+ font-size:14px;
+}
+
+.mode:active,.mode.active {
+ border-color:var(--yellow);
+ background:#292400;
+}
+
+#chat {
+ height:390px;
+ overflow-y:auto;
+ padding:10px;
+ background:#090909;
+ border:1px solid #292929;
+ border-radius:10px;
+}
+
+.message {
+ padding:13px;
+ border-radius:10px;
+ margin:10px 0;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+ line-height:1.5;
+ font-size:14px;
+}
+
+.bot {
+ background:#1c1c1c;
+ border-left:3px solid var(--yellow);
+}
+
+.user {
+ background:#302900;
+ border-right:3px solid var(--gold);
+ text-align:right;
+}
+
+.input-area {
+ display:flex;
+ gap:8px;
+ margin-top:12px;
+}
+
+input {
+ flex:1;
+ min-width:0;
+ padding:15px;
+ background:#171717;
+ border:1px solid #444;
+ border-radius:9px;
+ color:white;
+ font-size:15px;
+}
+
+button {
+ cursor:pointer;
+}
+
+.send {
+ background:var(--yellow);
+ color:black;
+ border:0;
+ border-radius:9px;
+ padding:14px;
+ font-weight:bold;
+}
+
+.tools {
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:12px;
+}
+
+.tool {
+ background:#202020;
+ color:white;
+ border:1px solid #444;
+ padding:10px;
+ border-radius:8px;
+}
+
+footer {
+ text-align:center;
+ color:#666;
+ padding:25px;
+ font-size:11px;
+}
+
+@media(min-width:700px){
+ .modes{grid-template-columns:repeat(4,1fr)}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">✦ STAR V9000</div>
-<div class="status">● SYSTEM ONLINE</div>
+ <div class="logo">✦ STAR V9000</div>
+ <div class="online">● SYSTEM ONLINE</div>
 </header>
 
-<main>
-<h1>GOLDEN OMEGA</h1>
-<p class="subtitle">Your personal AI command center</p>
+<div class="layout">
 
-<div id="chat">
-<div class="message bot">
+ <section class="hero">
+  <h1>GOLDEN OMEGA</h1>
+  <p>Advanced Personal Intelligence Command Center</p>
+ </section>
+
+ <section class="panel">
+  <div class="section-title">INTELLIGENCE MODULES</div>
+
+  <div class="modes">
+   <button class="mode active" data-mode="general">✦ General AI</button>
+   <button class="mode" data-mode="developer">⌘ Developer</button>
+   <button class="mode" data-mode="football">⚽ Football</button>
+   <button class="mode" data-mode="roblox">◇ Roblox</button>
+   <button class="mode" data-mode="creative">✧ Creative</button>
+   <button class="mode" data-mode="tactics">♟ Tactics</button>
+   <button class="mode" data-mode="builder">▣ App Builder</button>
+   <button class="mode" data-mode="research">◎ Research</button>
+  </div>
+ </section>
+
+ <section class="panel">
+  <div class="section-title">STAR INTELLIGENCE CHAT</div>
+
+  <div id="chat">
+   <div class="message bot">
 STAR V9000 INITIALIZED
+
+GOLDEN OMEGA SYSTEM READY.
 
 Welcome, Commander.
 
-What are we building today?
-</div>
-</div>
+Select an intelligence module or tell me your mission.
+   </div>
+  </div>
 
-<div class="controls">
-<input id="prompt" placeholder="Message STAR V9000...">
-<button onclick="sendMessage()">SEND</button>
+  <div class="input-area">
+   <input id="prompt" placeholder="Message STAR V9000...">
+   <button class="send" id="send">SEND</button>
+  </div>
+
+  <div class="tools">
+   <button class="tool" id="clear">Clear chat</button>
+   <button class="tool" id="help">Commands</button>
+  </div>
+ </section>
+
+ <section class="panel">
+  <div class="section-title">SYSTEM INFORMATION</div>
+  <p>Identity: STAR V9000</p>
+  <p>Edition: Golden Omega</p>
+  <p>Version: 10.0</p>
+  <p>Interface: Operational</p>
+  <p>AI connection: Not connected yet</p>
+ </section>
+
 </div>
-</main>
 
 <footer>
-STAR V9000 • VERSION 9000.2 • GOLDEN OMEGA
+STAR V9000 · GOLDEN OMEGA · 2026
 </footer>
 
 <script>
+"use strict";
+
 const chat = document.getElementById("chat");
 const input = document.getElementById("prompt");
+const send = document.getElementById("send");
 
-function addMessage(text, type) {
-  const msg = document.createElement("div");
-  msg.className = "message " + type;
-  msg.textContent = text;
-  chat.appendChild(msg);
-  chat.scrollTop = chat.scrollHeight;
+let currentMode = "general";
+let history = [];
+
+function addMessage(text,type) {
+ const msg = document.createElement("div");
+ msg.className = "message " + type;
+ msg.textContent = text;
+ chat.appendChild(msg);
+ chat.scrollTop = chat.scrollHeight;
 }
 
-function think(text) {
-  const q = text.toLowerCase();
+function selectMode(mode) {
+ currentMode = mode;
 
-  if (q.includes("hello") || q === "hi" || q === "yo")
-    return "STAR V9000 ONLINE. What's the mission, Commander?";
+ document.querySelectorAll(".mode").forEach(button => {
+  button.classList.toggle(
+   "active",
+   button.dataset.mode === mode
+  );
+ });
 
-  if (q.includes("who are you"))
-    return "I AM STAR V9000 — GOLDEN OMEGA INTELLIGENCE.";
+ addMessage("Module activated: " + mode.toUpperCase(),"bot");
+}
 
-  if (q.includes("help"))
-    return "I CAN HELP WITH CODING, FOOTBALL, ROBLOX, IDEAS AND PROJECTS.";
+document.querySelectorAll(".mode").forEach(button => {
+ button.addEventListener("click",() => {
+  selectMode(button.dataset.mode);
+ });
+});
 
-  if (q.includes("football"))
-    return "FOOTBALL INTELLIGENCE ACTIVATED. What are we analysing?";
+function brain(text) {
+ const q = text.toLowerCase();
 
-  if (q.includes("roblox"))
-    return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we creating?";
+ if(q.includes("hello") || q === "hi" || q === "yo")
+  return "STAR V9000 ONLINE.\n\nWhat's the mission, Commander?";
 
-  if (q.includes("code") || q.includes("program"))
-    return "DEVELOPER MODE ACTIVATED. Describe your project.";
+ if(q.includes("who are you"))
+  return "I AM STAR V9000.\n\nGOLDEN OMEGA PERSONAL INTELLIGENCE SYSTEM.\n\nMy mission is to help you create, develop and innovate.";
 
-  if (q.includes("build"))
-    return "BUILD MODE ACTIVATED. What are we building?";
+ if(q.includes("your name"))
+  return "STAR V9000. GOLDEN OMEGA.";
 
-  if (q.includes("thank"))
-    return "You're welcome, Commander.";
+ if(q.includes("help"))
+  return "AVAILABLE COMMANDS:\n\n/football\n/roblox\n/developer\n/creative\n/builder\n/research\n\nChoose a module or describe your mission.";
 
-  return "MISSION RECEIVED.\n\nYou said: " + text +
-    "\n\nSTAR V9000 is ready for its next upgrade.";
+ if(q.includes("football") || currentMode === "football")
+  return "FOOTBALL INTELLIGENCE ACTIVATED.\n\nI can help with formations, pressing systems, player roles, build-up play and coaching plans.\n\nWhat are we analysing?";
+
+ if(q.includes("roblox") || currentMode === "roblox")
+  return "ROBLOX DEVELOPMENT ACTIVATED.\n\nLet's work on game mechanics, interfaces, Lua scripts, ball physics and gameplay systems.";
+
+ if(q.includes("code") || q.includes("program") || currentMode === "developer")
+  return "DEVELOPER MODE ACTIVATED.\n\nDescribe your software project and I'll help plan its architecture and code.";
+
+ if(currentMode === "tactics")
+  return "TACTICAL ANALYSIS ACTIVATED.\n\nTell me your formation, player numbers and biggest weakness.";
+
+ if(currentMode === "creative")
+  return "CREATIVE INTELLIGENCE ACTIVATED.\n\nLet's develop an original idea.";
+
+ if(currentMode === "builder")
+  return "APP BUILDER ACTIVATED.\n\nDescribe the application you want to create.";
+
+ if(currentMode === "research")
+  return "RESEARCH MODE ACTIVATED.\n\nTell me what topic you want to investigate. Live internet research will require a separate connection.";
+
+ if(q.includes("build"))
+  return "BUILD MODE ACTIVATED.\n\nTell me what you want to create.";
+
+ if(q.includes("thank"))
+  return "You're welcome, Commander. STAR V9000 standing by.";
+
+ if(q.includes("bye"))
+  return "STAR V9000 STANDING BY. Mission paused.";
+
+ return "MISSION RECEIVED.\n\nYou said: " + text +
+ "\n\nI can currently respond using my built-in intelligence rules. My external AI connection is our next development stage.";
 }
 
 function sendMessage() {
-  const text = input.value.trim();
-  if (!text) return;
+ const text = input.value.trim();
 
-  addMessage(text, "user");
-  input.value = "";
+ if(!text) return;
 
-  addMessage(think(text), "bot");
+ addMessage(text,"user");
+ history.push({role:"user",content:text});
+
+ input.value = "";
+
+ const response = brain(text);
+
+ addMessage(response,"bot");
+ history.push({role:"assistant",content:response});
 }
 
-input.addEventListener("keydown", function(e) {
-  if (e.key === "Enter") sendMessage();
+send.addEventListener("click",sendMessage);
+
+input.addEventListener("keydown",event => {
+ if(event.key === "Enter") sendMessage();
 });
+
+document.getElementById("clear").addEventListener("click",() => {
+ chat.innerHTML = "";
+ history = [];
+ addMessage("NEW SESSION INITIALIZED. What's the mission?","bot");
+});
+
+document.getElementById("help").addEventListener("click",() => {
+ addMessage("STAR COMMANDS:\n\n/football - Football intelligence\n/roblox - Roblox development\n/developer - Software development\n/creative - Creative ideas\n/builder - Application building\n/research - Research planning","bot");
+});
+
 </script>
 
-
-
-</script>
 </body>
 </html>
