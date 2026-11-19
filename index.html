@@ -81,69 +81,65 @@ STAR V9000 • VERSION 9000.2 • GOLDEN OMEGA
 </footer>
 
 <script>
-const chat=document.getElementById("chat");
-const input=document.getElementById("prompt");
+const chat = document.getElementById("chat");
+const input = document.getElementById("prompt");
 
-function addMessage(text,type){
-const msg=document.createElement("div");
-msg.className="message "+type;
-msg.textContent=text;
-chat.appendChild(msg);
-chat.scrollTop=chat.scrollHeight;
+function addMessage(text, type) {
+  const msg = document.createElement("div");
+  msg.className = "message " + type;
+  msg.textContent = text;
+  chat.appendChild(msg);
+  chat.scrollTop = chat.scrollHeight;
 }
 
-async function sendMessage(){
-const text=input.value.trim();
-if(!text)return;
+function think(text) {
+  const q = text.toLowerCase();
 
-addMessage(text,"user");
-input.value="";
+  if (q.includes("hello") || q === "hi" || q === "yo")
+    return "STAR V9000 ONLINE. What's the mission, Commander?";
 
-addMessage("STAR V9000 is thinking...","bot");
+  if (q.includes("who are you"))
+    return "I AM STAR V9000 — GOLDEN OMEGA INTELLIGENCE.";
 
-setTimeout(()=>{
-const last=chat.lastElementChild;
-last.textContent = await think(text);
-},300);
+  if (q.includes("help"))
+    return "I CAN HELP WITH CODING, FOOTBALL, ROBLOX, IDEAS AND PROJECTS.";
+
+  if (q.includes("football"))
+    return "FOOTBALL INTELLIGENCE ACTIVATED. What are we analysing?";
+
+  if (q.includes("roblox"))
+    return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we creating?";
+
+  if (q.includes("code") || q.includes("program"))
+    return "DEVELOPER MODE ACTIVATED. Describe your project.";
+
+  if (q.includes("build"))
+    return "BUILD MODE ACTIVATED. What are we building?";
+
+  if (q.includes("thank"))
+    return "You're welcome, Commander.";
+
+  return "MISSION RECEIVED.\n\nYou said: " + text +
+    "\n\nSTAR V9000 is ready for its next upgrade.";
 }
 
-function think(text){
-const q=text.toLowerCase();
+function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
 
-if(q.includes("hello")||q==="hi"||q==="yo")
-return "STAR V9000 ONLINE. What's the mission, Commander?";
+  addMessage(text, "user");
+  input.value = "";
 
-if(q.includes("who are you"))
-return "I AM STAR V9000 — GOLDEN OMEGA INTELLIGENCE.";
-
-if(q.includes("help"))
-return "COMMAND CENTER:\n\n1. Application development\n2. Coding assistance\n3. Football tactics\n4. Roblox development\n5. Creative ideas\n6. General questions";
-
-if(q.includes("football"))
-return "FOOTBALL INTELLIGENCE ACTIVATED. Tell me what we're analysing.";
-
-if(q.includes("roblox"))
-return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we creating?";
-
-if(q.includes("code")||q.includes("program"))
-return "DEVELOPER MODE ACTIVATED. Describe your project.";
-
-if(q.includes("build"))
-return "BUILD MODE ACTIVATED. Tell me what application you want to create.";
-
-if(q.includes("thank"))
-return "You're welcome, Commander. STAR V9000 standing by.";
-
-if(q.includes("your name"))
-return "My name is STAR V9000. Golden Omega intelligence.";
-
-return "MISSION RECEIVED.\n\nYou said: "+text+
-"\n\nMy basic response engine is active. The real AI brain is our next upgrade.";
+  addMessage(think(text), "bot");
 }
 
-input.addEventListener("keydown",function(e){
-if(e.key==="Enter")sendMessage();
+input.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") sendMessage();
 });
+</script>
+
+
+
 </script>
 </body>
 </html>
