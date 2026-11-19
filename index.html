@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR V9000</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;background:#080808;color:white;
+font-family:Arial,sans-serif;
+}
+header{
+padding:20px;border-bottom:1px solid #ffd500;
+display:flex;justify-content:space-between;
+align-items:center;
+}
+.logo{color:#ffd500;font-size:24px;font-weight:900}
+.status{color:#aaff00;font-size:12px}
+main{max-width:850px;margin:auto;padding:20px}
+h1{color:#ffd500;font-size:30px}
+.subtitle{color:#888}
+#chat{
+height:55vh;overflow-y:auto;
+border:1px solid #333;border-radius:12px;
+padding:15px;margin:20px 0;
+background:#101010;
+}
+.message{
+padding:12px;margin:10px 0;
+border-radius:10px;line-height:1.5;
+white-space:pre-wrap;
+}
+.bot{background:#202020;border-left:3px solid #ffd500}
+.user{background:#292500;text-align:right}
+.controls{display:flex;gap:8px}
+input{
+flex:1;min-width:0;padding:15px;
+background:#151515;border:1px solid #555;
+border-radius:8px;color:white;font-size:16px;
+}
+button{
+background:#ffd500;color:black;
+border:0;border-radius:8px;
+padding:14px;font-weight:bold;
+}
+button:active{opacity:.7}
+footer{text-align:center;color:#666;padding:20px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">✦ STAR V9000</div>
+<div class="status">● SYSTEM ONLINE</div>
+</header>
+
+<main>
+<h1>GOLDEN OMEGA</h1>
+<p class="subtitle">Your personal AI command center</p>
+
+<div id="chat">
+<div class="message bot">
+STAR V9000 INITIALIZED
+
+Welcome, Commander.
+
+What are we building today?
+</div>
+</div>
+
+<div class="controls">
+<input id="prompt" placeholder="Message STAR V9000..."
+onkeydown="if(event.key==='Enter')sendMessage()">
+<button onclick="sendMessage()">SEND</button>
+</div>
+</main>
+
+<footer>STAR V9000 • VERSION 9000.1 • GOLDEN OMEGA</footer>
+
+<script>
+const chat=document.getElementById("chat");
+const input=document.getElementById("prompt");
+
+function addMessage(text,type){
+const msg=document.createElement("div");
+msg.className="message "+type;
+msg.textContent=text;
+chat.appendChild(msg);
+chat.scrollTop=chat.scrollHeight;
+}
+
+function sendMessage(){
+const text=input.value.trim();
+if(!text)return;
+
+addMessage(text,"user");
+input.value="";
+
+setTimeout(()=>{
+addMessage(think(text),"bot");
+},400);
+}
+
+function think(text){
+const q=text.toLowerCase();
+
+if(q.includes("hello")||q==="hi")
+return "STAR V9000 ONLINE. How can I assist you?";
+
+if(q.includes("help"))
+return "COMMAND CENTER:\n• Build applications\n• Generate ideas\n• Explain code\n• Plan projects\n• Answer questions";
+
+if(q.includes("who are you"))
+return "I AM STAR V9000 — YOUR GOLDEN OMEGA AI COMMAND CENTER.";
+
+if(q.includes("build"))
+return "BUILD MODE ACTIVATED. Describe the application you want to create.";
+
+if(q.includes("football"))
+return "FOOTBALL INTELLIGENCE ACTIVATED. Let's discuss tactics, training and football.";
+
+if(q.includes("roblox"))
+return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we creating?";
+
+if(q.includes("bye"))
+return "STAR V9000 STANDING BY. See you next time.";
+
+return "I received your message: "+text+
+"\n\nMy basic response engine is active. My advanced AI brain will be connected in a future upgrade.";
+}
+</script>
+</body>
+</html>
