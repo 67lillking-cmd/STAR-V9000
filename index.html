@@ -102,7 +102,30 @@ addMessage(think(text),"bot");
 },400);
 }
 
-function think(text){
+async function think(text){
+  const q = text.toLowerCase();
+
+  if(q.includes("hello") || q === "hi")
+    return "STAR V9000 ONLINE. What's the mission?";
+
+  if(q.includes("who are you"))
+    return "I AM STAR V9000 — GOLDEN OMEGA INTELLIGENCE.";
+
+  if(q.includes("help"))
+    return "I CAN HELP WITH CODING, FOOTBALL, ROBLOX, IDEAS AND PROJECTS.";
+
+  if(q.includes("football"))
+    return "FOOTBALL MODE ACTIVATED. Tell me your tactical objective.";
+
+  if(q.includes("roblox"))
+    return "ROBLOX DEVELOPMENT MODE ACTIVATED. What are we building?";
+
+  if(q.includes("code") || q.includes("program"))
+    return "DEVELOPER MODE ACTIVATED. Describe the code you want to create.";
+
+  return "MISSION RECEIVED: " + text +
+    "\n\nSTAR V9000 is ready for its real AI connection.";
+}
 const q=text.toLowerCase();
 
 if(q.includes("hello")||q==="hi")
